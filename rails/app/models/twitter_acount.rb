@@ -1,2 +1,0 @@
-class TwitterAccount < OauthAccount
-end
