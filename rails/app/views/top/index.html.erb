@@ -1,0 +1,7 @@
+Top<br>
+<%= link_to("ログイン", login_accounts_url) %>
+<%= link_to("簡易選択", choice_recommend_url) %>
+<%= form_tag(random_recommend_url)  do %>
+  <%= submit_tag("ランダム") %>
+<% end %>
+<%= link_to("過去の注文", histories_url) %>

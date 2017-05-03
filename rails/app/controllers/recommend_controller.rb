@@ -3,11 +3,11 @@ class RecommendController < BaseController
   end
 
   def imagine
-    redirect_to confirm_recommend
+    redirect_to confirm_recommend_url
   end
 
   def random
-    redirect_to confirm_recommend
+    redirect_to confirm_recommend_url
   end
 
   def confirm
