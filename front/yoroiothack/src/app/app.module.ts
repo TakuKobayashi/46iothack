@@ -9,6 +9,7 @@ import {RouterModule} from "@angular/router";
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import { DetailComponent } from './detail/detail.component';
+import {MenuService} from "./menu.service";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { DetailComponent } from './detail/detail.component';
       },
     ])
   ],
-  providers: [],
+  providers: [
+    MenuService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

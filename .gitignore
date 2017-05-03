@@ -44,3 +44,5 @@ rails/.byebug_history
 
 # OSX
 .DS_Store
+
+rails/config/apiconfig.yml
