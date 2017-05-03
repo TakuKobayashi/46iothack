@@ -1,3 +1,4 @@
+import {Observable} from "rxjs";
 import { Injectable } from '@angular/core';
 import {Menu} from "./menu";
 
@@ -348,24 +349,12 @@ export class MenuService {
     ]
   }
 
-  getMenus(): Menu[] {
-    return this.menus;
+  getMenus(): Observable<Menu[]> {
+    return new Observable(observer => {
+      setTimeout(() => {
+        observer.next(this.menus);
+      }, 1000);
+    });
   }
-
-  getSelectedMenus(): Menu[] {
-    return this.selectedMenus;
-  }
-
-  getCategoryMenu(id: number): Menu[] {
-    let categoryMenu = this.menus.filter((menu) => menu.category === id);
-    return categoryMenu;
-  }
-
-  addMenu(menu: Menu): Menu[] {
-    this.selectedMenus.push(menu);
-    return this.selectedMenus;
-  }
-
-
 
 }

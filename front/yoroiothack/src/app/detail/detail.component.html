@@ -1,29 +1,12 @@
 <div *ngFor="let category of categoryList">
   <div>
     <h2>{{category}}</h2>
-    <div *ngFor="let selectedMenu of getSelectedMenuByCategory(category)">
-      <p>{{selectedMenu.name}}</p>
-      <p>{{selectedMenu.price_in}}</p>
-    </div>
-    <div>
-      <form #f="ngForm">
-        <select name="menu" ngModel>
-          <option value="" disabled>メニューを選ぶ</option>
-          <option *ngFor="let menu of getCategoryMenu(category)" [ngValue]="menu">
-            {{ menu.name }}
-          </option>
-        </select>
-      </form>
-      <button (click)="selectMenu(f.value)"
-      >追加</button>
-    </div>
-    <div>
-      <button (click)="clickAdd(category)"
-              class=""
-      >{{category}}を追加</button>
+    <div *ngFor="let menu of menus">
+      <p>{{menu.name}}</p>
+      <p>{{menu.price_in}}</p>
     </div>
   </div>
 </div>
 <div>
-  <button>たのむ</button>
+  <button (click)="onClickOrder()">たのむ</button>
 </div>

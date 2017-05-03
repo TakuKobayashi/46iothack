@@ -10,7 +10,6 @@ import { MenuService, CATEGORY } from "../menu.service";
 export class DetailComponent implements OnInit {
 
   private menus: Menu[];
-  private selectedMenus: Menu[];
   private categoryList : string[];
 
   constructor(private menuService: MenuService) {}
@@ -20,27 +19,16 @@ export class DetailComponent implements OnInit {
   }
 
   private init(): void {
-    this.menus         = this.menuService.getMenus();
-    this.selectedMenus = this.menuService.getSelectedMenus();
+    this.menuService.getMenus().subscribe(
+      menus => this.menus = menus
+    );
     this.categoryList  = CATEGORY;
+    console.log(this.menus);
+    console.log(this.categoryList);
   }
 
-  clickAdd(category: string): void {
-    console.log(`${category}を追加`);
-  }
-
-  getCategoryMenu(category: string): Menu[] {
-    return this.menus.filter((menu) => menu.category_name === category);
-  }
-
-  getSelectedMenuByCategory(category: string): Menu[] {
-    return this.selectedMenus.filter((menu) => menu.category_name === category);
-  }
-
-  selectMenu(menu: Menu): void {
-    this.selectedMenus = this.menuService.addMenu(menu);
-    console.log(this.selectedMenus);
-
+  onClickOrder(): void {
+    console.log(`click order`);
   }
 
 }
