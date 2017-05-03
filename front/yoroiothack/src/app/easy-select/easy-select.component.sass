@@ -1,18 +1,36 @@
 body
-  margin: 0
+
+.dummy
+  height: 2000px
 
 .easy-select
   &-form
 
-    &__wrapper
-      display: inline-block
+    &__background
+      margin: 0
+      background-image: url("./wood.jpg")
+      background-repeat: repeat
+      background-size: contain
+
+    &__flex-wrapper
+      display: flex
+      flex-wrap: wrap
+      justify-content: space-around
+
+      margin: auto
+      width: 80%
+      border: solid 1px black
 
     &__title
       color: green
 
     &__input
+      display: inline-block
 
     &__item
+      display: inline-block
+      width: 115px
+      margin-bottom: 10px
 
     &__button
       border: 1px solid red
