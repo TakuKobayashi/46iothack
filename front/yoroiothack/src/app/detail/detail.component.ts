@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Menu} from "../menu";
+import {MenuService} from "../menu.service";
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  private menus: Menu[];
+
+  constructor(private menuService: MenuService) {}
 
   ngOnInit() {
+    this.init();
+  }
+
+  private init(): void {
+    this.menus = this.menuService.getMenus();
+    console.log(this.menus);
   }
 
 }

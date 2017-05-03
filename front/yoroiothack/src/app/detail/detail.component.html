@@ -1,3 +1,7 @@
-<p>
-  detail works!
-</p>
+<div *ngFor="let menu of menus">
+  <div>
+    <h2>{{menu.category}}</h2>
+    <p>{{menu.name}}</p>
+    <p>{{menu.price}}</p>
+  </div>
+</div>
