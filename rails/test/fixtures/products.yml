@@ -8,6 +8,8 @@
 #  category     :integer          not null
 #  price        :integer          default("0"), not null
 #  price_in_tax :integer          default("0"), not null
+#  kcal         :integer          default("0"), not null
+#  image_path   :string(255)
 #
 # Indexes
 #
