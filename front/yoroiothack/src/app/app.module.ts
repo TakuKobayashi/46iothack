@@ -5,16 +5,41 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { EasySelectComponent } from './easy-select/easy-select.component';
+import {RouterModule} from "@angular/router";
+import { IndexComponent } from './index/index.component';
+import { LoginComponent } from './login/login.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EasySelectComponent
+    EasySelectComponent,
+    IndexComponent,
+    LoginComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: IndexComponent
+      },
+      {
+        path: 'easy-select',
+        component: EasySelectComponent
+      },
+      {
+        path: 'detail',
+        component: DetailComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
