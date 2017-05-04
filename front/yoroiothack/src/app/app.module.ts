@@ -28,7 +28,7 @@ import { CompleteComponent } from './complete/complete.component';
     RouterModule.forRoot([
       {
         path: '',
-        component: IndexComponent
+        component: EasySelectComponent
       },
       {
         path: 'easy-select',
