@@ -415,7 +415,7 @@ export class MenuService {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(true);
-      }, 3000);
+      }, 0);
     });
   }
 
