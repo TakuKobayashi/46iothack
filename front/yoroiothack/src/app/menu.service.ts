@@ -23,10 +23,8 @@ export class MenuService {
   //おもしろ
   dummyMenus4: Menu[];
 
-  dummyMenuList: Array<Menu[]>;
 
-
-  constructor() {
+  constructor(private http: Http) {
     this.menus         = [];
     //さっぱりのイメージ
     this.dummyMenus    = [
@@ -100,7 +98,7 @@ export class MenuService {
         price_in: 162,
         kcal: 59,
       }
-    ];
+    ]
     //がっつり
     this.dummyMenus2    = [
       {
@@ -163,7 +161,7 @@ export class MenuService {
         price_in: 162,
         kcal: 95,
       }
-    ];
+    ]
     //女子会
     this.dummyMenus3    = [
       {
@@ -236,62 +234,62 @@ export class MenuService {
         price_in: 346,
         kcal: 95,
       }
-    ];
+    ]
     //おもしろ
     this.dummyMenus4    = [
       {
         id: 14,
-        name: `さっぱりレモンサラダ（塩麹ドレッシング）`,
+        name: `おつまミミガー`,
         type: `food`,
         category: 2,
         category_name: 'サラダ',
         price: 390,
-        price_in: 421,
+        price_in: 302,
         kcal: 95,
       },
       {
         id: 14,
-        name: `刺身三種盛り合せ`,
+        name: `ごろごろサラダ（海老&アボカド&玉子）`,
         type: `food`,
         category: 2,
         category_name: 'サラダ',
         price: 390,
-        price_in: 594,
+        price_in: 486,
         kcal: 95,
       },
       {
         id: 14,
-        name: `ほうれん草ベーコン`,
+        name: `真鯛刺身 ポン酢添え`,
         type: `food`,
         category: 2,
         category_name: 'サラダ',
         price: 390,
-        price_in: 324,
+        price_in: 518,
         kcal: 95,
       },
       {
         id: 14,
-        name: `ふわふわとろろ芋鉄板焼`,
+        name: `室蘭風焼とん串（１本）`,
         type: `food`,
         category: 2,
         category_name: 'サラダ',
         price: 390,
-        price_in: 454,
+        price_in: 162,
         kcal: 95,
       },
       {
         id: 14,
-        name: `バジルピザ`,
+        name: `ヤゲン串（１本）`,
         type: `food`,
         category: 2,
         category_name: 'サラダ',
         price: 390,
-        price_in: 410,
+        price_in: 194,
         kcal: 95,
       },
       {
         id: 14,
-        name: `まぐろアボカド（塩麹マヨ）`,
+        name: `エイヒレ`,
         type: `food`,
         category: 2,
         category_name: 'サラダ',
@@ -301,30 +299,43 @@ export class MenuService {
       },
       {
         id: 14,
-        name: `ごろっとフルーツアイス添え`,
+        name: `大盛りもやし炒め`,
         type: `food`,
         category: 2,
         category_name: 'サラダ',
         price: 390,
-        price_in: 346,
+        price_in: 410,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `デザートピザ（北海道産あずき&クリーム）[ハーフ]`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 410,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `冷奴`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 302,
         kcal: 95,
       }
-    ];
-    this.dummyMenuList = [
-      this.dummyMenus,
-      this.dummyMenus2,
-      this.dummyMenus3,
-      this.dummyMenus4
-    ];
-
+    ]
   }
 
   getMenus(): Observable<Menu[]> {
     return new Observable(observer => {
       setTimeout(() => {
-        // //デバッグ用
-        // this.menus = this.dummyMenus;
-        // //デバッグ用
+        //デバッグ用
+        this.menus = this.dummyMenus;
+        //デバッグ用
         observer.next(this.menus);
       }, 1000);
     });
@@ -338,8 +349,7 @@ export class MenuService {
   askMenu(params: any): Promise<boolean> {
     console.log(params);
     return new Promise((resolve) => {
-      let random = Math.floor( Math.random() * (4 - 1 + 1) ) + 1;
-      this.menus = this.dummyMenuList[random - 1];
+      this.menus = this.dummyMenus2;
       setTimeout(() => {
         resolve(true);
       }, 0);
@@ -371,25 +381,25 @@ export class MenuService {
     //     );
     // });
 
-    // const headers: Headers = new Headers();
-    // headers.append('Accept', 'application/json');
-    // headers.append('Content-Type', 'application/json');
-    // headers.append('Access-Control-Allow-Origin', '*');
-    // headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    //
-    // const options = new RequestOptions({
-    //   headers: headers
-    // });
-    //
-    // const URL = `http://taptappun.cloudapp.net/recommend/imageine_json`;
-    // return this.http.get(URL, options)
-    //   .toPromise()
-    //   .then((response) => {
-    //     console.log(response);
-    //     this.menus = response.json().data as Menu[];
-    //     return true;
-    //   })
-    // ;
+    const headers: Headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    const options = new RequestOptions({
+      headers: headers
+    });
+
+    const URL = `http://taptappun.cloudapp.net/recommend/imageine_json`;
+    return this.http.get(URL, options)
+      .toPromise()
+      .then((response) => {
+        console.log(response);
+        this.menus = response.json().data as Menu[];
+        return true;
+      })
+    ;
   }
 
   order(): Promise<boolean> {
