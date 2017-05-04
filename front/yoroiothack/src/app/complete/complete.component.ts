@@ -14,7 +14,7 @@ export class CompleteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.qrCodePath = `/assets/qrcode.png`;
+    this.qrCodePath = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCA.. `;
   }
 
 }

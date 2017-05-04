@@ -14,10 +14,19 @@ export const CATEGORY: string[] = [
 export class MenuService {
 
   menus: Menu[];
+  //さっぱり
   dummyMenus: Menu[];
+  //がっつり
+  dummyMenus2: Menu[];
+  //女子会
+  dummyMenus3: Menu[];
+  //おもしろ
+  dummyMenus4: Menu[];
+
 
   constructor(private http: Http) {
     this.menus         = [];
+    //さっぱりのイメージ
     this.dummyMenus    = [
       {
         id: 14,
@@ -90,6 +99,216 @@ export class MenuService {
         kcal: 59,
       }
     ]
+    //がっつり
+    this.dummyMenus2    = [
+      {
+        id: 14,
+        name: `ラーメンサラダ`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 518,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `ローストビーフピザ（こってり味）[ハーフ]`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 410,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `ふわふわとろろ芋鉄板焼`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 454,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `みんなでおつまみ盛り`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 959,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `トンテキ`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 529,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `厚切りベーコン串（１本）`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 162,
+        kcal: 95,
+      }
+    ]
+    //女子会
+    this.dummyMenus3    = [
+      {
+        id: 14,
+        name: `さっぱりレモンサラダ（塩麹ドレッシング）`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 421,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `刺身三種盛り合せ`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 594,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `ほうれん草ベーコン`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 324,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `ふわふわとろろ芋鉄板焼`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 454,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `バジルピザ`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 410,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `まぐろアボカド（塩麹マヨ）`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 389,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `ごろっとフルーツアイス添え`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 346,
+        kcal: 95,
+      }
+    ]
+    //おもしろ
+    this.dummyMenus4    = [
+      {
+        id: 14,
+        name: `さっぱりレモンサラダ（塩麹ドレッシング）`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 421,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `刺身三種盛り合せ`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 594,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `ほうれん草ベーコン`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 324,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `ふわふわとろろ芋鉄板焼`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 454,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `バジルピザ`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 410,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `まぐろアボカド（塩麹マヨ）`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 389,
+        kcal: 95,
+      },
+      {
+        id: 14,
+        name: `ごろっとフルーツアイス添え`,
+        type: `food`,
+        category: 2,
+        category_name: 'サラダ',
+        price: 390,
+        price_in: 346,
+        kcal: 95,
+      }
+    ]
+
   }
 
   getMenus(): Observable<Menu[]> {
@@ -111,7 +330,7 @@ export class MenuService {
   askMenu(params: any): Promise<boolean> {
     console.log(params);
     return new Promise((resolve) => {
-      this.menus = this.dummyMenus;
+      this.menus = this.dummyMenus2;
       setTimeout(() => {
         resolve(true);
       }, 0);
