@@ -328,7 +328,6 @@ export class MenuService {
         kcal: 95,
       }
     ]
-
   }
 
   getMenus(): Observable<Menu[]> {
