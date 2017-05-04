@@ -46,3 +46,4 @@ rails/.byebug_history
 .DS_Store
 
 rails/config/apiconfig.yml
+rails/config/database.yml
