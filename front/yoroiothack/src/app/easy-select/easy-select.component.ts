@@ -24,12 +24,12 @@ export class EasySelectComponent implements OnInit {
   constructor(private menuService: MenuService,
               private router: Router) {
     this.headcount = [1,2,3,4,5,6];
-    this.selectedHeadCount = 1;
+    this.selectedHeadCount = 2;
 
     this.budget = [1000, 1500, 2000, 2500, 3000, 4000, 4500, 5000];
     this.selectedBudget = 2500;
 
-    this.style = [`サッパリ`, `がっつり`, `おもしろ`, `女子会`];
+    this.style = [`おもしろ`, `サッパリ`, `がっつり`, `女子会`];
     this.selectedStyle = `おもしろ`;
 
     this.must = [`つまみ`, `サラダ`, `串もの`, `刺し身`];
