@@ -7,7 +7,7 @@
   animation: transparent-in 1s ease-in-out
 
   position: relative
-  padding-top: 110px
+  padding: 154px 0 30px
 
   &-title
     margin: 0
@@ -78,8 +78,18 @@
     position: fixed
     top: 0
 
+    &__price
+      background-color: #B2232A
+      width: 70%
+      margin: auto
+      color: white
+      padding: 9px
+      border-radius: 10px
+      text-align: center
+
     &__image
       width: 100%
+      animation: rotate 1s ease-in-out infinite alternate
 
 @keyframes horizontal
   0%
@@ -89,9 +99,9 @@
 
 @keyframes rotate
   0%
-    transform: rotate( 0deg)
+    transform: rotate( 3deg)
   100%
-    transform: rotate(  30deg)
+    transform: rotate(  -3deg)
 
 @keyframes transparent-in
   0%
