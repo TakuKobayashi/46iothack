@@ -1,0 +1,64 @@
+.complete
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif
+  width: 100vw
+  height: 100vh
+  margin: 0
+  background-image: url("../../assets/wood.jpg")
+  background-repeat: repeat
+  background-size: contain
+
+  &-title
+    margin: 0
+    padding: 20px 0 0
+
+    &__hyotan
+      position: absolute
+      top: 16px
+      left: 7%
+      display: block
+      width: 15%
+
+      animation: rotate 1.5s ease infinite alternate
+
+    &__image
+      display: block
+      margin-left: 20%
+      width: 70%
+
+  &-baku
+    display: block
+    margin: 0 auto 10px
+    width: 100%
+    animation: horizontal 0.7s ease-in-out infinite alternate
+
+  &-qrcode
+    width: 100vw
+    margin-top: 25px
+
+    &__image
+      display: block
+      margin: 0 auto
+
+    &__baku
+      display: block
+      width: 50%
+      margin: 10px auto 0 auto
+
+
+@keyframes horizontal
+    0%
+        transform: translateY( 10px)
+    100%
+        transform: translateX(  0px)
+
+@keyframes rotate
+    0%
+        transform: rotate( 0deg)
+    100%
+        transform: rotate(  30deg)
+
+@keyframes transparent-in
+    0%
+        opacity: 0
+    100%
+        opacity: 1

@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompleteComponent implements OnInit {
 
-  constructor() { }
+  qrCodePath: string;
+
+  constructor() {
+    this.ngOnInit();
+  }
 
   ngOnInit() {
+    this.qrCodePath = `/assets/qrcode.png`;
   }
 
 }

@@ -11,10 +11,13 @@ export class EasySelectComponent implements OnInit {
 
   public headcount: number[];
   public selectedHeadCount: number;
+
   public budget: number[];
   public selectedBudget: number;
+
   public style: string[];
   public selectedStyle: string;
+
   public must: string[];
   public selectedMust: string[];
 
