@@ -354,6 +354,9 @@ export class MenuService {
   getMenus(): Observable<Menu[]> {
     return new Observable(observer => {
       setTimeout(() => {
+        //デバッグ用
+        this.menus = this.dummyMenus;
+        //デバッグ用
         observer.next(this.menus);
       }, 1000);
     });
@@ -370,7 +373,7 @@ export class MenuService {
       this.menus = this.dummyMenus;
       setTimeout(() => {
         resolve(true);
-      }, 3000);
+      }, 0);
     });
   }
 

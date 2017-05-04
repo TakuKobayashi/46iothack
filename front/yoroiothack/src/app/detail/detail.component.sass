@@ -1,0 +1,100 @@
+.detail
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif
+  background-image: url("./wood.jpg")
+  background-repeat: repeat
+  background-size: contain
+
+  animation: transparent-in 1s ease-in-out
+
+  position: relative
+  padding-top: 110px
+
+  &-title
+    margin: 0
+    padding: 20px 0 0
+
+    &__hyotan
+      position: absolute
+      top: 16px
+      left: 7%
+      display: block
+      width: 15%
+
+      animation: rotate 1.5s ease infinite alternate
+
+    &__image
+      display: block
+      margin-left: 20%
+      width: 70%
+
+  &-baku
+    display: block
+    margin: 0 auto 10px
+    width: 100%
+    animation: horizontal 0.7s ease-in-out infinite alternate
+
+  &-form
+    color: #B2232A
+
+    &__box
+      display: flex
+      align-items: center
+      justify-content: space-between
+      border-radius: 10px
+      margin: 0 auto 10px
+      padding: 10px 20px
+      width: 310px
+      background-color: rgba(white, 0.8)
+
+    &__flex-wrapper
+      margin-left: 4%
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+
+    &__name
+      margin: 0
+      width: 191px
+
+    &__price_in
+      margin: 0
+
+    &__button
+      border-radius: 5px
+      color: white
+      background-color: #B2232A
+      padding: 5px
+      margin: 0
+      border-width: 0
+      font-size: 10px
+
+    &__title
+      text-align: center
+      margin: 0
+      padding: 18px 0
+
+  &-order
+    padding-top: 10px
+    position: fixed
+    top: 0
+
+    &__image
+      width: 100%
+
+@keyframes horizontal
+  0%
+    transform: translateY( 10px)
+  100%
+    transform: translateX(  0px)
+
+@keyframes rotate
+  0%
+    transform: rotate( 0deg)
+  100%
+    transform: rotate(  30deg)
+
+@keyframes transparent-in
+  0%
+    opacity: 0
+  100%
+    opacity: 1
