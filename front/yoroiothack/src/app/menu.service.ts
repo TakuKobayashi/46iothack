@@ -15,7 +15,7 @@ export class MenuService {
 
   constructor() {
     this.selectedMenus = [];
-    this.menus        = [
+    this.menus         = [
       {
         id: 1,
         name: `きゅうり一本漬`,
@@ -355,6 +355,11 @@ export class MenuService {
         observer.next(this.menus);
       }, 1000);
     });
+  }
+
+  deleteMenu(menu: Menu): Menu[] {
+    let filteredMenus = this.menus.filter((_menu) => _menu.id !== menu.id);
+    return this.menus = filteredMenus;
   }
 
 }
