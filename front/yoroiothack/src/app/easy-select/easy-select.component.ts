@@ -27,7 +27,7 @@ export class EasySelectComponent implements OnInit {
     this.selectedHeadCount = 2;
 
     this.budget = [1000, 1500, 2000, 2500, 3000, 4000, 4500, 5000];
-    this.selectedBudget = 2500;
+    this.selectedBudget = 3000;
 
     this.style = [`おもしろ`, `サッパリ`, `がっつり`, `女子会`];
     this.selectedStyle = `おもしろ`;
