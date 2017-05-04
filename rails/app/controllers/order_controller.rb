@@ -4,6 +4,10 @@ class OrderController < BaseController
   end
 
   def scan
+    order_recipe = OrderRecipe.find_by(token: params[:token])
+    order_attr = order_recipe.attributes
+    order_attr[:ingredients] = order_recipe.ingredients
+    render :json => order_attr
   end
 
   def result_json

@@ -16,6 +16,8 @@
 #
 
 class OrderRecipe < ApplicationRecord
+  has_many :ingredients, class_name: 'OrderRecipeIngredient', foreign_key: :order_recipe_id
+
   before_create do
     self.token = SecureRandom.hex
   end

@@ -57,8 +57,10 @@ class Product < ApplicationRecord
         category_name: I18n.t("activerecord.enum.product.category.#{food.category}"),
       })
     end
-    results.each do |hash|
-      OrderRecipeIngredient.create!(user_id: order_recipe.user_id, order_recipe_id: order_recipe.id, product_id: hash["id"])
+    transaction do
+      results.each do |hash|
+        order_recipe.ingredients.create!(user_id: order_recipe.user_id, product_id: hash["id"])
+      end
     end
     return results
   end
