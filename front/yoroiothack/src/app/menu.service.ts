@@ -2,7 +2,7 @@ import {Observable} from "rxjs";
 var request = require('superagent');
 
 import { Injectable } from '@angular/core';
-import {Http} from "@angular/http";
+import {Http, Headers, RequestOptions} from "@angular/http";
 import {Menu} from "./menu";
 
 export const CATEGORY: string[] = [
@@ -370,38 +370,32 @@ export class MenuService {
 
   askMenu(params: any): Promise<boolean> {
     console.log(params);
-    return new Promise((resolve) => {
-      this.menus = this.dummyMenus;
-      setTimeout(() => {
-        resolve(true);
-      }, 0);
+    // return new Promise((resolve) => {
+    //   this.menus = this.dummyMenus;
+    //   setTimeout(() => {
+    //     resolve(true);
+    //   }, 0);
+    // });
+
+    const headers: Headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    const options = new RequestOptions({
+      headers: headers
     });
 
-    // const URL = `https://localhost/api`;
-    // return this.http.post(URL, params)
-    //   .toPromise()
-    //   .then((response) => {
-    //     this.menus = response.json().data as Menu[];
-    //     return true;
-    //   })
-    //   .catch(this.handleError)
-    // ;
-
-    // let url = `https://localhost/api`;
-    // return new Promise((resolve, reject) => {
-    //   request.post(url)
-    //     .send(params)
-    //     .end(
-    //       (err, res) => {
-    //         if (err) {
-    //           reject(err);
-    //         } else {
-    //           this.menus = JSON.parse(res);
-    //           resolve(JSON.parse(res));
-    //         }
-    //       }
-    //     );
-    // });
+    const URL = `http://taptappun.cloudapp.net/recommend/imageine_json`;
+    return this.http.get(URL, options)
+      .toPromise()
+      .then((response) => {
+        console.log(response);
+        this.menus = response.json().data as Menu[];
+        return true;
+      })
+    ;
   }
 
   order(): Promise<boolean> {
@@ -412,9 +406,9 @@ export class MenuService {
     });
   }
 
-  // private handleError(error: any): Promise<boolean> {
-  //   console.error('An error occurred', error); // for demo purposes only
-  //   return Promise.reject(false);
-  // }
+  private handleError(error: any): Promise<boolean> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(false);
+  }
 
 }
