@@ -1,5 +1,8 @@
 import {Observable} from "rxjs";
+var request = require('superagent');
+
 import { Injectable } from '@angular/core';
+import {Http} from "@angular/http";
 import {Menu} from "./menu";
 
 export const CATEGORY: string[] = [
@@ -13,7 +16,7 @@ export class MenuService {
   menus: Menu[];
   dummyMenus: Menu[];
 
-  constructor() {
+  constructor(private http: Http) {
     this.menus         = [];
     this.dummyMenus    = [
       {
@@ -113,6 +116,32 @@ export class MenuService {
         resolve(true);
       }, 0);
     });
+
+    // const URL = `https://localhost/api`;
+    // return this.http.post(URL, params)
+    //   .toPromise()
+    //   .then((response) => {
+    //     this.menus = response.json().data as Menu[];
+    //     return true;
+    //   })
+    //   .catch(this.handleError)
+    // ;
+
+    // let url = `https://localhost/api`;
+    // return new Promise((resolve, reject) => {
+    //   request.post(url)
+    //     .send(params)
+    //     .end(
+    //       (err, res) => {
+    //         if (err) {
+    //           reject(err);
+    //         } else {
+    //           this.menus = JSON.parse(res);
+    //           resolve(JSON.parse(res));
+    //         }
+    //       }
+    //     );
+    // });
   }
 
   order(): Promise<boolean> {
@@ -122,5 +151,10 @@ export class MenuService {
       }, 3000);
     });
   }
+
+  // private handleError(error: any): Promise<boolean> {
+  //   console.error('An error occurred', error); // for demo purposes only
+  //   return Promise.reject(false);
+  // }
 
 }
