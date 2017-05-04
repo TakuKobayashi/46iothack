@@ -12,11 +12,9 @@ export class MenuService {
 
   menus: Menu[];
   dummyMenus: Menu[];
-  selectedMenus: any[];
 
   constructor() {
-    this.selectedMenus = [];
-    this.menus         = []
+    this.menus         = [];
     this.dummyMenus    = [
       {
         id: 1,
