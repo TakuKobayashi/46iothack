@@ -23,8 +23,10 @@ export class MenuService {
   //おもしろ
   dummyMenus4: Menu[];
 
+  dummyMenuList: Array<Menu[]>;
 
-  constructor(private http: Http) {
+
+  constructor() {
     this.menus         = [];
     //さっぱりのイメージ
     this.dummyMenus    = [
@@ -98,7 +100,7 @@ export class MenuService {
         price_in: 162,
         kcal: 59,
       }
-    ]
+    ];
     //がっつり
     this.dummyMenus2    = [
       {
@@ -161,7 +163,7 @@ export class MenuService {
         price_in: 162,
         kcal: 95,
       }
-    ]
+    ];
     //女子会
     this.dummyMenus3    = [
       {
@@ -234,7 +236,7 @@ export class MenuService {
         price_in: 346,
         kcal: 95,
       }
-    ]
+    ];
     //おもしろ
     this.dummyMenus4    = [
       {
@@ -307,16 +309,22 @@ export class MenuService {
         price_in: 346,
         kcal: 95,
       }
-    ]
+    ];
+    this.dummyMenuList = [
+      this.dummyMenus,
+      this.dummyMenus2,
+      this.dummyMenus3,
+      this.dummyMenus4
+    ];
 
   }
 
   getMenus(): Observable<Menu[]> {
     return new Observable(observer => {
       setTimeout(() => {
-        //デバッグ用
-        this.menus = this.dummyMenus;
-        //デバッグ用
+        // //デバッグ用
+        // this.menus = this.dummyMenus;
+        // //デバッグ用
         observer.next(this.menus);
       }, 1000);
     });
@@ -330,7 +338,8 @@ export class MenuService {
   askMenu(params: any): Promise<boolean> {
     console.log(params);
     return new Promise((resolve) => {
-      this.menus = this.dummyMenus2;
+      let random = Math.floor( Math.random() * (4 - 1 + 1) ) + 1;
+      this.menus = this.dummyMenuList[random - 1];
       setTimeout(() => {
         resolve(true);
       }, 0);
@@ -362,25 +371,25 @@ export class MenuService {
     //     );
     // });
 
-    const headers: Headers = new Headers();
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'application/json');
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-    const options = new RequestOptions({
-      headers: headers
-    });
-
-    const URL = `http://taptappun.cloudapp.net/recommend/imageine_json`;
-    return this.http.get(URL, options)
-      .toPromise()
-      .then((response) => {
-        console.log(response);
-        this.menus = response.json().data as Menu[];
-        return true;
-      })
-    ;
+    // const headers: Headers = new Headers();
+    // headers.append('Accept', 'application/json');
+    // headers.append('Content-Type', 'application/json');
+    // headers.append('Access-Control-Allow-Origin', '*');
+    // headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //
+    // const options = new RequestOptions({
+    //   headers: headers
+    // });
+    //
+    // const URL = `http://taptappun.cloudapp.net/recommend/imageine_json`;
+    // return this.http.get(URL, options)
+    //   .toPromise()
+    //   .then((response) => {
+    //     console.log(response);
+    //     this.menus = response.json().data as Menu[];
+    //     return true;
+    //   })
+    // ;
   }
 
   order(): Promise<boolean> {
