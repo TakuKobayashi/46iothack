@@ -11,7 +11,9 @@ class RecommendController < BaseController
   end
 
   def imageine_json
-    render :json => Product.lot_planning
+    order_recipe = OrderRecipe.create!(user_id: @current_user.id)
+    cookies[:order_token] = order_recipe.token
+    render :json => Product.lot_planning(order_recipe: order_recipe)
   end
 
   def confirm
