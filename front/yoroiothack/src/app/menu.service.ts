@@ -23,6 +23,8 @@ export class MenuService {
   //おもしろ
   dummyMenus4: Menu[];
 
+  dummyMenuList: Array<Menu[]>;
+
 
   constructor(private http: Http) {
     this.menus         = [];
@@ -327,15 +329,21 @@ export class MenuService {
         price_in: 302,
         kcal: 95,
       }
-    ]
+    ];
+
+    this.dummyMenuList = [
+      this.dummyMenus,
+      this.dummyMenus2,
+      this.dummyMenus3,
+      this.dummyMenus4
+    ];
   }
 
   getMenus(): Observable<Menu[]> {
     return new Observable(observer => {
       setTimeout(() => {
-        //デバッグ用
-        this.menus = this.dummyMenus;
-        //デバッグ用
+        let random = Math.floor( Math.random() * (4 - 1 + 1) ) + 1;
+        this.menus = this.dummyMenuList[random - 1];
         observer.next(this.menus);
       }, 1000);
     });
@@ -349,7 +357,8 @@ export class MenuService {
   askMenu(params: any): Promise<boolean> {
     console.log(params);
     return new Promise((resolve) => {
-      this.menus = this.dummyMenus2;
+      let random = Math.floor( Math.random() * (4 - 1 + 1) ) + 1;
+      this.menus = this.dummyMenuList[random - 1];
       setTimeout(() => {
         resolve(true);
       }, 0);
@@ -381,25 +390,25 @@ export class MenuService {
     //     );
     // });
 
-    const headers: Headers = new Headers();
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'application/json');
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-    const options = new RequestOptions({
-      headers: headers
-    });
-
-    const URL = `http://taptappun.cloudapp.net/recommend/imageine_json`;
-    return this.http.get(URL, options)
-      .toPromise()
-      .then((response) => {
-        console.log(response);
-        this.menus = response.json().data as Menu[];
-        return true;
-      })
-    ;
+    // const headers: Headers = new Headers();
+    // headers.append('Accept', 'application/json');
+    // headers.append('Content-Type', 'application/json');
+    // headers.append('Access-Control-Allow-Origin', '*');
+    // headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //
+    // const options = new RequestOptions({
+    //   headers: headers
+    // });
+    //
+    // const URL = `http://taptappun.cloudapp.net/recommend/imageine_json`;
+    // return this.http.get(URL, options)
+    //   .toPromise()
+    //   .then((response) => {
+    //     console.log(response);
+    //     this.menus = response.json().data as Menu[];
+    //     return true;
+    //   })
+    // ;
   }
 
   order(): Promise<boolean> {
