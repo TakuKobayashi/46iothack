@@ -16,4 +16,7 @@
 #
 
 class OrderRecipe < ApplicationRecord
+  before_create do
+    self.token = SecureRandom.hex
+  end
 end

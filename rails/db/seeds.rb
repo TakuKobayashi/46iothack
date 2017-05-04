@@ -14,15 +14,18 @@ files.each do |file_name|
   records = csv.split("\n")
   headers = records.first.to_s.strip.split(",").select{|s| Product.column_names.include?(s) }
   products = []
+  categories = Product.categories.invert
   records[1..records.size].each do |rec|
   	product = Product.new
     cells = rec.strip.split(",")
     headers.each_with_index do |header, index|
-      product.send(header + "=", cells[index])
+      if header == "category"
+        product.send(header + "=", categories[cells[index].to_i])
+      else
+        product.send(header + "=", cells[index])
+      end
     end
-    if product.price_in_tax.present?
-      products << product
-    end
+    products << product
   end
   Product.import(products)
 end

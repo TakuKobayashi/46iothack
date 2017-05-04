@@ -47,7 +47,7 @@ class Product < ApplicationRecord
     soft_drink: 27,
   }
 
-  def self.lot_planning(params: {})
+  def self.lot_planning(order_recipe: , params: {})
     category_foods = Food.all.group_by(&:category)
     results = category_foods.map do |c, fs|
       food = fs.sample
@@ -56,6 +56,9 @@ class Product < ApplicationRecord
         category: Product.categories[food.category],
         category_name: I18n.t("activerecord.enum.product.category.#{food.category}"),
       })
+    end
+    results.each do |hash|
+      OrderRecipeIngredient.create!(user_id: order_recipe.user_id, order_recipe_id: order_recipe.id, product_id: hash["id"])
     end
     return results
   end

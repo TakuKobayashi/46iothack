@@ -361,6 +361,26 @@ export class MenuService {
     //       }
     //     );
     // });
+
+    const headers: Headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    const options = new RequestOptions({
+      headers: headers
+    });
+
+    const URL = `http://taptappun.cloudapp.net/recommend/imageine_json`;
+    return this.http.get(URL, options)
+      .toPromise()
+      .then((response) => {
+        console.log(response);
+        this.menus = response.json().data as Menu[];
+        return true;
+      })
+    ;
   }
 
   order(): Promise<boolean> {
@@ -371,9 +391,9 @@ export class MenuService {
     });
   }
 
-  // private handleError(error: any): Promise<boolean> {
-  //   console.error('An error occurred', error); // for demo purposes only
-  //   return Promise.reject(false);
-  // }
+  private handleError(error: any): Promise<boolean> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(false);
+  }
 
 }
