@@ -17,4 +17,7 @@
 #
 
 class User < ApplicationRecord
+  before_create do
+    self.token = SecureRandom.hex
+  end
 end

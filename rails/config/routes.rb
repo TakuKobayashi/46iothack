@@ -12,11 +12,14 @@ Rails.application.routes.draw do
   resource :order, controller: :order, only: [] do
     post 'execute'
     get 'result'
+    get 'result_json'
+    get 'scan'
   end
 
   resource :recommend, controller: :recommend, only: [] do
     post 'imagine'
     post 'random'
+    get 'imageine_json'
     get 'choice'
     get 'confirm'
   end
