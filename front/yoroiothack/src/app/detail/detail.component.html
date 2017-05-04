@@ -1,10 +1,8 @@
-<div *ngFor="let category of categoryList">
-  <div>
-    <h2>{{category}}</h2>
-    <div *ngFor="let menu of menus">
-      <p>{{menu.name}}</p>
-      <p>{{menu.price_in}}</p>
-    </div>
+<div>
+  <div *ngFor="let menu of menus">
+    <p>{{menu.name}}</p>
+    <p>{{menu.price_in}}</p>
+    <button (click)="onClickDelete(menu)">たのまない</button>
   </div>
 </div>
 <div>

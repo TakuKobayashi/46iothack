@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from "../menu";
-import { MenuService, CATEGORY } from "../menu.service";
+import { MenuService } from "../menu.service";
 
 @Component({
   selector: 'app-detail',
@@ -10,7 +10,6 @@ import { MenuService, CATEGORY } from "../menu.service";
 export class DetailComponent implements OnInit {
 
   private menus: Menu[];
-  private categoryList : string[];
 
   constructor(private menuService: MenuService) {}
 
@@ -22,9 +21,10 @@ export class DetailComponent implements OnInit {
     this.menuService.getMenus().subscribe(
       menus => this.menus = menus
     );
-    this.categoryList  = CATEGORY;
-    console.log(this.menus);
-    console.log(this.categoryList);
+  }
+
+  onClickDelete(menu: Menu): void {
+    this.menus = this.menuService.deleteMenu(menu);
   }
 
   onClickOrder(): void {
