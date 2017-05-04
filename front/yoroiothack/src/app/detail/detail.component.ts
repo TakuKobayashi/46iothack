@@ -12,6 +12,7 @@ import { MenuService } from "../menu.service";
 export class DetailComponent implements OnInit {
 
   private menus: Menu[];
+  private totalPrice: number;
 
   constructor(private menuService: MenuService,
               private router: Router) {}
@@ -21,13 +22,15 @@ export class DetailComponent implements OnInit {
   }
 
   private init(): void {
-    this.menuService.getMenus().subscribe(
-      menus => this.menus = menus
-    );
+    this.menuService.getMenus().subscribe((menus) => {
+      this.menus = menus;
+      this.calcTotal();
+    });
   }
 
   onClickDelete(menu: Menu): void {
     this.menus = this.menuService.deleteMenu(menu);
+    this.calcTotal();
   }
 
   onClickOrder(): void {
@@ -35,6 +38,13 @@ export class DetailComponent implements OnInit {
       if (response) {
         this.router.navigate(['/complete']);
       }
+    });
+  }
+
+  calcTotal(): void {
+    this.totalPrice = 0;
+    this.menus.map((menu) => {
+      this.totalPrice += menu.price_in;
     });
   }
 
