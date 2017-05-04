@@ -15,7 +15,7 @@ export class EasySelectComponent implements OnInit {
   public selectedBudget: number;
   public style: string[];
   public selectedStyle: string;
-  public must?: string;
+  public must: string[];
   public selectedMust: string[];
 
   constructor(private menuService: MenuService,
@@ -28,6 +28,9 @@ export class EasySelectComponent implements OnInit {
 
     this.style = [`サッパリ`, `がっつり`, `おもしろ`, `女子会`];
     this.selectedStyle = `おもしろ`;
+
+    this.must = [`つまみ`, `サラダ`, `串もの`, `刺し身`];
+    this.selectedMust = [];
   }
 
   ngOnInit() {
@@ -43,6 +46,10 @@ export class EasySelectComponent implements OnInit {
 
   onChangeStyle(index: number): void {
     this.selectedStyle = this.style[index];
+  }
+
+  onSelectMust(index: number): void {
+    this.selectedMust.push(this.must[index]);
   }
 
   onClickAsk(): void {

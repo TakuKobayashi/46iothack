@@ -22,6 +22,7 @@
           </div>
         </div>
       </div>
+
       <div class="easy-select-form__box">
         <h2 class="easy-select-form__title">一人あたりの予算</h2>
         <div class="easy-select-form__flex-wrapper">
@@ -38,6 +39,7 @@
           </div>
         </div>
       </div>
+
       <div class="easy-select-form__box">
         <h2 class="easy-select-form__title">気分</h2>
         <div class="easy-select-form__flex-wrapper">
@@ -54,23 +56,23 @@
           </div>
         </div>
       </div>
+
       <div class="easy-select-form__box">
         <h2 class="easy-select-form__title">コレは外せない！</h2>
         <div class="easy-select-form__flex-wrapper">
-          <div class="easy-select-form__item">
-            <label><input type="checkbox" name="must" value="つまみ"><span class="easy-select-form__text">つまみ</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="checkbox" name="must" value="サラダ"><span class="easy-select-form__text">サラダ</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="checkbox" name="must" value="串もの"><span class="easy-select-form__text">串もの</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="checkbox" name="must" value="刺身"><span class="easy-select-form__text">刺身</span></label>
+          <div class="easy-select-form__item"
+               *ngFor="let item of must; let idx = index;"
+          >
+            <label>
+              <input type="checkbox"
+                     [value]="item"
+                     (change)="onSelectMust(idx)"
+              ><span class="easy-select-form__text">{{item}}</span>
+            </label>
           </div>
         </div>
       </div>
+
       <label>
         <input class="easy-select-form__button"
                type="button"
