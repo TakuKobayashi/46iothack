@@ -6,7 +6,7 @@ class OrderController < BaseController
   def scan
     order_recipe = OrderRecipe.find_by(token: params[:token])
     order_attr = order_recipe.attributes
-    order_attr[:ingredients] = order_recipe.ingredients
+    order_attr[:products] = order_recipe.ingredients.includes(:product).map{|i| i.product.attributes }
     render :json => order_attr
   end
 
