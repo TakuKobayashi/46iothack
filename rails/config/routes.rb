@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resource :recommend, controller: :recommend, only: [] do
     post 'imagine'
     post 'random'
+    get 'imageine_json'
     get 'choice'
     get 'confirm'
   end
