@@ -10,6 +10,7 @@ import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import { DetailComponent } from './detail/detail.component';
 import {MenuService} from "./menu.service";
+import { CompleteComponent } from './complete/complete.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {MenuService} from "./menu.service";
     EasySelectComponent,
     IndexComponent,
     LoginComponent,
-    DetailComponent
+    DetailComponent,
+    CompleteComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,10 @@ import {MenuService} from "./menu.service";
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'complete',
+        component: CompleteComponent
       },
     ])
   ],

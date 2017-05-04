@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+
 import { Menu } from "../menu";
 import { MenuService } from "../menu.service";
 
@@ -11,7 +13,8 @@ export class DetailComponent implements OnInit {
 
   private menus: Menu[];
 
-  constructor(private menuService: MenuService) {}
+  constructor(private menuService: MenuService,
+              private router: Router) {}
 
   ngOnInit() {
     this.init();
@@ -28,7 +31,11 @@ export class DetailComponent implements OnInit {
   }
 
   onClickOrder(): void {
-    console.log(`click order`);
+    this.menuService.order().then((response) => {
+      if (response) {
+        this.router.navigate(['/complete']);
+      }
+    });
   }
 
 }

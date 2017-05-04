@@ -11,11 +11,13 @@ export const CATEGORY: string[] = [
 export class MenuService {
 
   menus: Menu[];
+  dummyMenus: Menu[];
   selectedMenus: any[];
 
   constructor() {
     this.selectedMenus = [];
-    this.menus         = [
+    this.menus         = []
+    this.dummyMenus    = [
       {
         id: 1,
         name: `きゅうり一本漬`,
@@ -360,6 +362,24 @@ export class MenuService {
   deleteMenu(menu: Menu): Menu[] {
     let filteredMenus = this.menus.filter((_menu) => _menu.id !== menu.id);
     return this.menus = filteredMenus;
+  }
+
+  askMenu(params: any): Promise<boolean> {
+    console.log(params);
+    return new Promise((resolve) => {
+      this.menus = this.dummyMenus;
+      setTimeout(() => {
+        resolve(true);
+      }, 3000);
+    });
+  }
+
+  order(): Promise<boolean> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(true);
+      }, 3000);
+    });
   }
 
 }

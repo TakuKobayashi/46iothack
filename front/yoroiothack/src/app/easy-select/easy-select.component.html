@@ -5,73 +5,52 @@
       <img class="easy-select-title__image" src="/assets/logo.png" alt="">
     </h2>
     <img class="easy-select-baku" src="/assets/baku.png" alt="">
-    <form class="easy-select-form" action="" method="post">
+    <form #easySelectForm="ngForm" class="easy-select-form" action="" method="post">
       <div class="easy-select-form__box">
         <h2 class="easy-select-form__title">利用人数</h2>
         <div class="easy-select-form__flex-wrapper">
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="headcount" value="1"><span class="easy-select-form__text">1人</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="headcount" value="2" checked="checked"><span class="easy-select-form__text">2人</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="headcount" value="3"><span class="easy-select-form__text">3人</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="headcount" value="4"><span class="easy-select-form__text">4人</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="headcount" value="5"><span class="easy-select-form__text">5人</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="headcount" value="6"><span class="easy-select-form__text">6人</span></label>
+          <div class="easy-select-form__item"
+               *ngFor="let item of headcount; let idx = index;"
+          >
+            <label>
+              <input type="radio"
+                     [value]="item"
+                     (change)="onChangeHeadCount(idx)"
+                     [checked]="selectedHeadCount === item"
+              ><span class="easy-select-form__text">{{item}}人</span>
+            </label>
           </div>
         </div>
       </div>
       <div class="easy-select-form__box">
         <h2 class="easy-select-form__title">一人あたりの予算</h2>
         <div class="easy-select-form__flex-wrapper">
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="budget" value="1000"><span class="easy-select-form__text">1000円</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="budget" value="1500"><span class="easy-select-form__text">1500円</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="budget" value="2000"><span class="easy-select-form__text">2000円</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="budget" value="2500" checked="checked"><span class="easy-select-form__text">2500円</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="budget" value="3000"><span class="easy-select-form__text">3000円</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="budget" value="4000"><span class="easy-select-form__text">4000円</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="budget" value="4500"><span class="easy-select-form__text">4500円</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="budget" value="5000"><span class="easy-select-form__text">5000円</span></label>
+          <div class="easy-select-form__item"
+               *ngFor="let item of budget; let idx = index;"
+          >
+            <label>
+              <input type="radio"
+                     [value]="item"
+                     (change)="onChangeBudget(idx)"
+                     [checked]="selectedBudget === item"
+              ><span class="easy-select-form__text">{{item}}円</span>
+            </label>
           </div>
         </div>
       </div>
       <div class="easy-select-form__box">
         <h2 class="easy-select-form__title">気分</h2>
         <div class="easy-select-form__flex-wrapper">
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="style" value="おもしろ" checked="checked"><span class="easy-select-form__text">おもしろ</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="style" value="サッパリ"><span class="easy-select-form__text">サッパリ</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="style" value="がっつり"><span class="easy-select-form__text">がっつり</span></label>
-          </div>
-          <div class="easy-select-form__item">
-            <label><input type="radio" name="style" value="女子会"><span class="easy-select-form__text">女子会</span></label>
+          <div class="easy-select-form__item"
+               *ngFor="let item of style; let idx = index;"
+          >
+            <label>
+              <input type="radio"
+                     [value]="item"
+                     (change)="onChangeStyle(idx)"
+                     [checked]="selectedStyle === item"
+              ><span class="easy-select-form__text">{{item}}</span>
+            </label>
           </div>
         </div>
       </div>
@@ -92,10 +71,13 @@
           </div>
         </div>
       </div>
-      <label><input class="easy-select-form__button" type="button" value="バックンのおすすめを聞く" onclick="alert('これはテストです')"></label>
+      <label>
+        <input class="easy-select-form__button"
+               type="button"
+               value="バックンのおすすめを聞く"
+               (click)="onClickAsk()">
+      </label>
     </form>
-
-    <div class="dummy"></div>
   </div>
 </div>
 
